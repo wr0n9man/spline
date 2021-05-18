@@ -4,10 +4,8 @@ import { Layer, Stage, Line, Circle } from "react-konva";
 import {  useEffect, useState } from "react";
 
 	export default function Main() {
-	const [tool, setTool] = useState("pen");
+	const tool="pen";
 	const [result, setResult] = useState("")
-	const [gradus, setGradus] = useState(0);
-	const [tangens, setTangens] = useState(0);
 	const [select, setSelect] = useState('polygon')
 	const [pointDot, setPointDot] = useState({
 		Y:-10,
@@ -27,7 +25,7 @@ import {  useEffect, useState } from "react";
 
 	useEffect(() => {
 		const onKeypress = e => {
-			if(e.key=='c'){
+			if(e.key==='c'){
 				setLines([]);
 				setDopLine([]);
 				setIsDrawingPolygon(true);
@@ -45,7 +43,7 @@ import {  useEffect, useState } from "react";
 
 	const handleMouseDown = (e) => {
 		const pos = e.target.getStage().getPointerPosition();
-		if (select=="polygon"){
+		if (select==="polygon"){
 			if(isDrawingPolygon){
 			
 				setLines([...lines, { tool, points: [pos.x, pos.y] }]);	
@@ -83,7 +81,7 @@ import {  useEffect, useState } from "react";
 	const handleMouseMove = (e) => {
 		const stage = e.target.getStage();
 		const point = stage.getPointerPosition();		
-		if (select=="polygon"){
+		if (select==="polygon"){
 			if(isDrawingPolygon){
 			
 				if (lines.find((line)=>{
@@ -101,31 +99,17 @@ import {  useEffect, useState } from "react";
 				}
 			}
 		}
-		let tang = ((350-point.y)/(point.x-350))
-		let arctg = Math.atan(tang); // Арктангенс
-		let angle = arctg * 180 / Math.PI; // угол в градусах
-		if (point.y>350){
-			if (tang < 0) {
-				angle = 360 + angle;
-			}else if (tang > 0) {
-				angle = 180 + angle;
-			}			 
-		}else{		
-			if (tang < 0) {
-				angle = 180 + angle;
-			} 
-		}	
+	
 
-		setGradus(angle)
-		setTangens(tang)				
+		
 	};
 
 	const handleDblClick=()=>{
-		if (select=="polygon"){
+		if (select==="polygon"){
 			if(isDrawingPolygon){
 				console.log(1);
 				setIsDrawingPolygon(false);
-				if(lines[lines.length-1].points.length==2){lines[lines.length-1].points.push(lines[0].points[0], lines[0].points[1])}else{
+				if(lines[lines.length-1].points.length===2){lines[lines.length-1].points.push(lines[0].points[0], lines[0].points[1])}else{
 				setLines([...lines, { tool, points: [lines[lines.length-1].points[2], lines[lines.length-1].points[3],lines[0].points[0], lines[0].points[1]] }]);}
 			}
 		
@@ -194,8 +178,8 @@ function pointInPolygon(lines, dot) {
 	function handleClickButton(){	
 		setTutorialStep(3);
 	var checkP = pointInPolygon(lines, pointDot)
-		if(checkP == 0){setResult('Точка лежит вне многоугольника')}
-		else if(checkP == 1) {setResult('Точка лежит в многоугольнике');}else{
+		if(checkP === 0){setResult('Точка лежит вне многоугольника')}
+		else if(checkP === 1) {setResult('Точка лежит в многоугольнике');}else{
 		setResult('Точка лежит на грани многоугольника');}
 		
 		
