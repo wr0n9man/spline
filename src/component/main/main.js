@@ -29,6 +29,7 @@ import {  useEffect, useState } from "react";
 				setLines([]);
 				setDopLine([]);
 				setIsDrawingPolygon(true);
+				setTutorialStep(1);
 			}
 		};
 	
@@ -59,12 +60,8 @@ import {  useEffect, useState } from "react";
 					lines.splice(lines.length - 1, 1, lastLine);
 				}else{ (lines.splice(lines.length - 1, 1));setLines(lines);
 				}
-				
-					// replace last
-			
-				
-					
-				
+						// replace last
+
 				}
 			}
 		}else{
