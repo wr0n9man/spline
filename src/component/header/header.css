@@ -1,0 +1,19 @@
+.header{
+	width: 100vw;
+
+}
+
+.header_h1{
+	font-style: normal;  
+   color: rgb(252, 246, 246);
+    line-height: 133%;
+		margin: 0 35px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+		text-align: center;
+    max-width: calc(100% - 17px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
