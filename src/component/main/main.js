@@ -30,6 +30,7 @@ import {  useEffect, useState } from "react";
 				setDopLine([]);
 				setIsDrawingPolygon(true);
 				setTutorialStep(1);
+				setSelect("polygon")
 			}
 		};
 	
